@@ -1,0 +1,178 @@
+{
+  "race": [
+    {
+      "id": "1",
+      "raceName": "Human",
+      "typesOfWeapon": [
+        {
+          "id": "1"
+        },
+        {
+          "id": "4"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "raceName": "Dwarf",
+      "typesOfWeapon": [
+        {
+          "id": "2"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "raceName": "Void Elf",
+      "typesOfWeapon": [
+        {
+          "id": "3"
+        },
+        {
+          "id": "5"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "raceName": "Undead",
+      "typesOfWeapon": [
+        {
+          "id": "6"
+        },
+        {
+          "id": "1"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "raceName": "Troll",
+      "typesOfWeapon": [
+        {
+          "id": "4"
+        },
+        {
+          "id": "7"
+        }
+      ]
+    }
+  ],
+  "Weapon": [
+    {
+      "id": "1",
+      "weaponName": "Sword",
+      "availableAbilities": [
+        {
+          "id": "1"
+        },
+        {
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "weaponName": "Axe",
+      "availableAbilities": [
+        {
+          "id": "6"
+        },
+        {
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "weaponName": "Wand",
+      "availableAbilities": [
+        {
+          "id": "4"
+        },
+        {
+          "id": "5"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "weaponName": "Bow",
+      "availableAbilities": [
+        {
+          "id": "8"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "weaponName": "Polearm",
+      "availableAbilities": [
+        {
+          "id": "6"
+        },
+        {
+          "id": "5"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "weaponName": "Dagger",
+      "availableAbilities": [
+        {
+          "id": "2"
+        },
+        {
+          "id": "7"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "weaponName": "Mace",
+      "availableAbilities": [
+        {
+          "id": "2"
+        },
+        {
+          "id": "8"
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "id": "1",
+      "abilityName": "Blessing of Protection"
+    },
+    {
+      "id": "2",
+      "abilityName": "Bloodlust"
+    },
+    {
+      "id": "3",
+      "abilityName": "Hammer of Justice"
+    },
+    {
+      "id": "4",
+      "abilityName": "Arcane Explosion"
+    },
+    {
+      "id": "5",
+      "abilityName": "Whirlwind"
+    },
+    {
+      "id": "6",
+      "abilityName": "Divine Shield"
+    },
+    {
+      "id": "7",
+      "abilityName": "Numbing Poison"
+    },
+    {
+      "id": "8",
+      "abilityName": "Redemption"
+    }
+  ]
+}
