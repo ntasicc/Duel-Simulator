@@ -14,6 +14,8 @@ export function fetchRace$(): Observable<Race> {
     map((el: any) => {
       return new Race(
         el.id,
+        el.health,
+        el.damage,
         el.raceName,
         createArrayOfIdsFromData(el.typesOfWeapon)
       )
@@ -38,6 +40,8 @@ export function fetchWeapon$(ids: Array<string>): Observable<Weapon> {
         return new Weapon(
           el.id,
           el.weaponName,
+          el.health,
+          el.damage,
           createArrayOfIdsFromData(el.availableAbilities)
         )
       })
@@ -54,7 +58,7 @@ export function fetchAbilities$(ids: Array<string>): Observable<Ability> {
     ).pipe(
       concatAll(),
       map((el: any) => {
-        return new Ability(el.id, el.abilityName)
+        return new Ability(el.id, el.abilityName, el.health, el.damage)
       })
     )
   })
