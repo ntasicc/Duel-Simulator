@@ -3,6 +3,8 @@
     {
       "id": "1",
       "raceName": "Human",
+      "health": "50000",
+      "damage": "11000",
       "typesOfWeapon": [
         {
           "id": "1"
@@ -15,6 +17,8 @@
     {
       "id": "2",
       "raceName": "Dwarf",
+      "health": "47000",
+      "damage": "11000",
       "typesOfWeapon": [
         {
           "id": "2"
@@ -24,6 +28,8 @@
     {
       "id": "3",
       "raceName": "Void Elf",
+      "health": "44000",
+      "damage": "12500",
       "typesOfWeapon": [
         {
           "id": "3"
@@ -36,6 +42,8 @@
     {
       "id": "4",
       "raceName": "Undead",
+      "health": "53000",
+      "damage": "9999",
       "typesOfWeapon": [
         {
           "id": "6"
@@ -48,6 +56,8 @@
     {
       "id": "5",
       "raceName": "Troll",
+      "health": "51500",
+      "damage": "11700",
       "typesOfWeapon": [
         {
           "id": "4"
@@ -62,6 +72,8 @@
     {
       "id": "1",
       "weaponName": "Sword",
+      "health": "0",
+      "damage": "1700",
       "availableAbilities": [
         {
           "id": "1"
@@ -74,6 +86,8 @@
     {
       "id": "2",
       "weaponName": "Axe",
+      "health": "0",
+      "damage": "1900",
       "availableAbilities": [
         {
           "id": "6"
@@ -86,6 +100,8 @@
     {
       "id": "3",
       "weaponName": "Wand",
+      "health": "0",
+      "damage": "3500",
       "availableAbilities": [
         {
           "id": "4"
@@ -98,6 +114,8 @@
     {
       "id": "4",
       "weaponName": "Bow",
+      "health": "0",
+      "damage": "1100",
       "availableAbilities": [
         {
           "id": "8"
@@ -107,6 +125,8 @@
     {
       "id": "5",
       "weaponName": "Polearm",
+      "health": "0",
+      "damage": "3000",
       "availableAbilities": [
         {
           "id": "6"
@@ -119,6 +139,8 @@
     {
       "id": "6",
       "weaponName": "Dagger",
+      "health": "0",
+      "damage": "1000",
       "availableAbilities": [
         {
           "id": "2"
@@ -131,6 +153,8 @@
     {
       "id": "7",
       "weaponName": "Mace",
+      "health": "0",
+      "damage": "1500",
       "availableAbilities": [
         {
           "id": "2"
@@ -144,35 +168,51 @@
   "abilities": [
     {
       "id": "1",
-      "abilityName": "Blessing of Protection"
+      "abilityName": "Blessing of Protection",
+      "health": "2500",
+      "damage": "0"
     },
     {
       "id": "2",
-      "abilityName": "Bloodlust"
+      "abilityName": "Bloodlust",
+      "health": "0",
+      "damage": "1000"
     },
     {
       "id": "3",
-      "abilityName": "Hammer of Justice"
+      "abilityName": "Hammer of Justice",
+      "health": "200",
+      "damage": "800"
     },
     {
       "id": "4",
-      "abilityName": "Arcane Explosion"
+      "abilityName": "Arcane Explosion",
+      "health": "0",
+      "damage": "2500"
     },
     {
       "id": "5",
-      "abilityName": "Whirlwind"
+      "abilityName": "Whirlwind",
+      "health": "100",
+      "damage": "2000"
     },
     {
       "id": "6",
-      "abilityName": "Divine Shield"
+      "abilityName": "Divine Shield",
+      "health": "1800",
+      "damage": "0"
     },
     {
       "id": "7",
-      "abilityName": "Numbing Poison"
+      "abilityName": "Numbing Poison",
+      "health": "1000",
+      "damage": "500"
     },
     {
       "id": "8",
-      "abilityName": "Redemption"
+      "abilityName": "Redemption",
+      "health": "3000",
+      "damage": "0"
     }
   ]
 }

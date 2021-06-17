@@ -2,7 +2,15 @@ class BaseModel {
   private id: string
   private name: string
   private upgradesIds: Array<string>
-  constructor(id: string, name: string, upgradesIds: Array<string>) {
+  private health: number
+  private damage: number
+  constructor(
+    id: string,
+    name: string,
+    hp: number,
+    dmg: number,
+    upgradesIds: Array<string>
+  ) {
     this.id = id
     this.name = name
     this.upgradesIds = upgradesIds
@@ -14,6 +22,14 @@ class BaseModel {
 
   get Name(): string {
     return this.name
+  }
+
+  get Health(): number {
+    return this.health
+  }
+
+  get Damage(): number {
+    return this.damage
   }
 
   get UpgradesIds(): Array<string> {
