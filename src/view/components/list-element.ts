@@ -1,20 +1,20 @@
-import Race from '../../models/race'
+import BaseModel from '../../models/base-model'
 
 class ListItem {
   private button: HTMLButtonElement
-  private race: Race
+  private model: BaseModel
   private ul: HTMLUListElement
-  constructor(ul: HTMLUListElement, race: Race) {
-    this.race = race
+  constructor(ul: HTMLUListElement, model: BaseModel) {
+    this.model = model
     this.button = document.createElement('button')
-    this.button.innerHTML = race.Name
+    this.button.innerHTML = model.Name
     this.ul = ul
   }
 
   public drawListItem() {
     const listItem: HTMLLIElement = document.createElement('li')
     this.ul.appendChild(listItem)
-    this.button.value = this.race.valueForButton
+    this.button.value = this.model.valueForButton
 
     listItem.appendChild(this.button)
   }
