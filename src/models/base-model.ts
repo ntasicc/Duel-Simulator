@@ -14,6 +14,8 @@ class BaseModel {
     this.id = id
     this.name = name
     this.upgradesIds = upgradesIds
+    this.health = hp
+    this.damage = dmg
   }
 
   get Id(): string {
@@ -36,8 +38,14 @@ class BaseModel {
     return this.upgradesIds
   }
 
-  get valueForButton(): string {
-    return this.upgradesIds.reduce((acc, id) => (acc = acc + ',' + id))
+  get valueForButton() {
+    let value =
+      this.upgradesIds.reduce((acc, id) => (acc = acc + ',' + id)) +
+      '.' +
+      this.Health +
+      '.' +
+      this.Damage
+    return value
   }
 }
 
