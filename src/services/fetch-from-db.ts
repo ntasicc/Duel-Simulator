@@ -14,9 +14,9 @@ export function fetchRace$(): Observable<Race> {
     map((el: any) => {
       return new Race(
         el.id,
+        el.raceName,
         el.health,
         el.damage,
-        el.raceName,
         createArrayOfIdsFromData(el.typesOfWeapon)
       )
     })
@@ -30,7 +30,7 @@ function createArrayOfIdsFromData(typesOfWeapon: Array<any>): Array<string> {
 }
 
 export function fetchWeapon$(ids: Array<string>): Observable<Weapon> {
-  if (ids.length === 0) return empty()
+  if (ids.length === 0 || ids === undefined) return empty()
   let weapons: Array<Observable<Weapon>> = ids.map((id: string) => {
     return from(
       fetch(DB_URL + 'weapon?id=' + id).then((data: Response) => data.json())
@@ -51,7 +51,7 @@ export function fetchWeapon$(ids: Array<string>): Observable<Weapon> {
 }
 
 export function fetchAbilities$(ids: Array<string>): Observable<Ability> {
-  if (ids.length === 0) return empty()
+  if (ids === undefined || ids.length === 0) return empty()
   let abilities: Array<Observable<Ability>> = ids.map((id: string) => {
     return from(
       fetch(DB_URL + 'abilities?id=' + id).then((data: Response) => data.json())
