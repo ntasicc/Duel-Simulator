@@ -4,11 +4,13 @@ import Ability from '../../models/Ability'
 import { fetchAbilities$ } from '../../services/fetch-from-db'
 import ListItem from './list-element'
 class AbilityList {
-  private selectedAbility: Subject<string>
-  private idsToDisplay: Subject<Array<string>>
+  private selectedAbility: Subject<any>
+  private idsToDisplay: Subject<any>
   private host: HTMLElement
   private list: HTMLUListElement
-  constructor(host: HTMLElement, _myIdsToDisplay: Subject<Array<string>>) {
+  private hp: number
+  private dmg: number
+  constructor(host: HTMLElement, _myIdsToDisplay: Subject<any>) {
     this.host = host
     this.selectedAbility = new Subject()
     this.idsToDisplay = _myIdsToDisplay
@@ -27,9 +29,11 @@ class AbilityList {
 
   protected configureMySteam$(): Observable<ListItem> {
     return this.idsToDisplay.pipe(
-      switchMap((ids: Array<string>) => {
+      switchMap((json: any) => {
         this.clearList()
-        return fetchAbilities$(ids)
+        this.hp = json.hp
+        this.dmg = json.dmg
+        return fetchAbilities$(json.ids)
       }),
       map((Ability: Ability) => new ListItem(this.uList, Ability))
     )
@@ -42,8 +46,19 @@ class AbilityList {
 
   protected onclick = (event: Event): void => {
     let chosenButton: HTMLButtonElement = <HTMLButtonElement>event.target
-    let ids: Array<string> = chosenButton.value.split(',')
-    this.selectedAbility.next('ready')
+    let valueFromButton: Array<string> = chosenButton.value.split(',')
+    let hp_Dmg: Array<string> =
+      valueFromButton[valueFromButton.length - 1].split('.')
+    valueFromButton.pop()
+    let ids: Array<string> = valueFromButton
+    ids.push(hp_Dmg[0])
+    hp_Dmg.shift()
+    console.log(this.hp)
+    console.log(this.dmg)
+    this.selectedAbility.next({
+      hp: this.hp + Number(hp_Dmg[0]),
+      dmg: this.dmg + Number(hp_Dmg[1]),
+    })
   }
 
   protected get uList(): HTMLUListElement {

@@ -4,11 +4,13 @@ import Weapon from '../../models/Weapon'
 import { fetchWeapon$ } from '../../services/fetch-from-db'
 import ListItem from './list-element'
 class WeaponList {
-  private selectedWeapon: Subject<Array<string>>
-  private idsToDisplay: Subject<Array<string>>
+  private selectedWeapon: Subject<any>
+  private idsToDisplay: Subject<any>
+  private hp: number
+  private dmg: number
   private host: HTMLElement
   private list: HTMLUListElement
-  constructor(host: HTMLElement, _myIdsToDisplay: Subject<Array<string>>) {
+  constructor(host: HTMLElement, _myIdsToDisplay: Subject<any>) {
     this.host = host
     this.selectedWeapon = new Subject()
     this.idsToDisplay = _myIdsToDisplay
@@ -27,9 +29,11 @@ class WeaponList {
 
   protected configureMySteam$(): Observable<ListItem> {
     return this.idsToDisplay.pipe(
-      switchMap((ids: Array<string>) => {
+      switchMap((json: any) => {
         this.clearList()
-        return fetchWeapon$(ids)
+        this.hp = Number(json.hp)
+        this.dmg = Number(json.dmg)
+        return fetchWeapon$(json.ids)
       }),
       map((weapon: Weapon) => new ListItem(this.uList, weapon))
     )
@@ -42,8 +46,20 @@ class WeaponList {
 
   protected onclick = (event: Event): void => {
     let chosenButton: HTMLButtonElement = <HTMLButtonElement>event.target
-    let ids: Array<string> = chosenButton.value.split(',')
-    this.selectedWeapon.next(ids)
+    let valueFromButton: Array<string> = chosenButton.value.split(',')
+    let hp_Dmg: Array<string> =
+      valueFromButton[valueFromButton.length - 1].split('.')
+    valueFromButton.pop()
+    let ids: Array<string> = valueFromButton
+    ids.push(hp_Dmg[0])
+    hp_Dmg.shift()
+    console.log(this.hp)
+    console.log(this.dmg)
+    this.selectedWeapon.next({
+      ids: ids,
+      hp: this.hp + Number(hp_Dmg[0]),
+      dmg: this.dmg + Number(hp_Dmg[1]),
+    })
   }
 
   protected get uList(): HTMLUListElement {
