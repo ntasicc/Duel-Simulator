@@ -6,11 +6,20 @@ import Weapon from '../models/weapon'
 
 const DB_URL: string = 'http://localhost:3000/'
 
-export function fetchRace$(): Observable<Race> {
+function getEntityFromDB(specificEntity: string): Observable<any> {
   return from(
-    fetch(DB_URL + 'race').then((data: Response) => data.json())
-  ).pipe(
-    concatAll(),
+    fetch(DB_URL + specificEntity).then((data: Response) => data.json())
+  ).pipe(concatAll())
+}
+
+function createArrayOfIdsFromData(typesOfWeapon: Array<any>): Array<string> {
+  let ids: Array<string> = new Array<string>()
+  ids = typesOfWeapon.map((weapon: any) => weapon.id)
+  return ids
+}
+
+export function fetchRace$(): Observable<Race> {
+  return getEntityFromDB('race').pipe(
     map((el: any) => {
       return new Race(
         el.id,
@@ -23,19 +32,10 @@ export function fetchRace$(): Observable<Race> {
   )
 }
 
-function createArrayOfIdsFromData(typesOfWeapon: Array<any>): Array<string> {
-  let ids: Array<string> = new Array<string>()
-  ids = typesOfWeapon.map((weapon: any) => weapon.id)
-  return ids
-}
-
 export function fetchWeapon$(ids: Array<string>): Observable<Weapon> {
-  if (ids.length === 0 || ids === undefined) return empty()
+  if (ids.length === 0) return empty()
   let weapons: Array<Observable<Weapon>> = ids.map((id: string) => {
-    return from(
-      fetch(DB_URL + 'weapon?id=' + id).then((data: Response) => data.json())
-    ).pipe(
-      concatAll(),
+    return getEntityFromDB(`weapon?id=${id}`).pipe(
       map((el: any) => {
         return new Weapon(
           el.id,
@@ -53,10 +53,7 @@ export function fetchWeapon$(ids: Array<string>): Observable<Weapon> {
 export function fetchAbilities$(ids: Array<string>): Observable<Ability> {
   if (ids === undefined || ids.length === 0) return empty()
   let abilities: Array<Observable<Ability>> = ids.map((id: string) => {
-    return from(
-      fetch(DB_URL + 'abilities?id=' + id).then((data: Response) => data.json())
-    ).pipe(
-      concatAll(),
+    return getEntityFromDB(`abilities?id=${id}`).pipe(
       map((el: any) => {
         return new Ability(el.id, el.abilityName, el.health, el.damage)
       })

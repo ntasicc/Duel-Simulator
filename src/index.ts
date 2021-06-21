@@ -1,17 +1,18 @@
 import { from, Observable, Subject } from 'rxjs'
-import FightButton from './view/Fight-button'
-import FightSimulatorView from './view/Fight-simulator-view'
 
-const view: FightSimulatorView = new FightSimulatorView()
+import FightSimulator from './view/fight-simulator'
+import Fighterfighter from './view/fighter-view'
 
-view.drawView()
+const fighter1: Fighterfighter = new Fighterfighter()
 
-const view1: FightSimulatorView = new FightSimulatorView()
+fighter1.drawView()
 
-view1.drawView()
+const fighter2: Fighterfighter = new Fighterfighter()
 
-const btn: FightButton = new FightButton(
-  view.fighterIsReady,
-  view1.fighterIsReady
+fighter2.drawView()
+
+const fightSimulator: FightSimulator = new FightSimulator(
+  fighter1.fighterIsReady,
+  fighter2.fighterIsReady
 )
-btn.drawButton()
+fightSimulator.waitingForFighters()
