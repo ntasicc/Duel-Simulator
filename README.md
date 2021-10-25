@@ -11,6 +11,7 @@ Duel Simulator was created as a college project. It's a mini-game where two play
 
 - HTML5
 - CSS3
+- TypeScript
 - ES6+,RxJS
 > For backend I used JSON server
 
